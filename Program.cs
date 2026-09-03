@@ -78,6 +78,7 @@ while (inventoryOpen)
         continue;
     }
 
+    // Show statistics
     else if (choice == "5")
     {
         Console.WriteLine("Statistics");
