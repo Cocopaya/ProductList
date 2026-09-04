@@ -113,7 +113,7 @@ while (inventoryOpen)
         }
         if (!productExists) {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"Couldn't find product: {userInput}");
+            Console.WriteLine("Product not found.");
         }
         Console.ResetColor();
         continue;
