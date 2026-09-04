@@ -7,12 +7,14 @@ Console.WriteLine("PRODUCT INVENTORY SYSTEM");
 
 while (inventoryOpen)
 {
+    Console.WriteLine(" ");
     Console.WriteLine("1. Add Products");
     Console.WriteLine("2. View Products");
     Console.WriteLine("3. Search Product");
     Console.WriteLine("4. Delete Product");
     Console.WriteLine("5. Statistics");
     Console.WriteLine("6. Exit");
+    Console.WriteLine(" ");
 
     string choice = Console.ReadLine();
 
@@ -26,6 +28,7 @@ while (inventoryOpen)
             products.Add(product);
         }
 
+        Console.ResetColor();
         continue;
     }
 
@@ -33,55 +36,95 @@ while (inventoryOpen)
     else if (choice == "2")
     {
         List<string> copy = new List<string>(products);
-        copy.Sort();
-        foreach (string product in copy)
+        Console.WriteLine(" ");
+        Console.WriteLine("LIST OF PRODUCTS:");
+        Console.WriteLine(" ");
+
+        if (copy.Count == 0)
         {
-            Console.WriteLine(product);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("You haven't added any products yet.");
+        }
+        else
+        {
+            copy.Sort();
+            Console.ForegroundColor = ConsoleColor.Green;
+
+            foreach (string product in copy)
+            {
+                Console.WriteLine(product);
+            }
         }
 
+        Console.ResetColor();
         continue;
     }
 
     // Search Product
     else if (choice == "3")
     {
+        Console.WriteLine(" ");
+        Console.WriteLine("SEARCH PRODUCT:");
+        Console.WriteLine(" ");
         string userInput = Console.ReadLine();
+        Console.WriteLine(" ");
+        bool productFound = false;
+
         foreach (string product in products)
         {
             if (product.Contains(userInput))
             {
-                Console.WriteLine(product);
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"Found product: {product}");
+                productFound = true;
             }
         }
 
+        if (!productFound)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Product not found.");
+        }
+
+        Console.ResetColor();
         continue;
     }
 
     // Delete Product
     else if (choice == "4")
     {
+        Console.WriteLine(" ");
+        Console.WriteLine("DELETE PRODUCT:");
+        Console.WriteLine(" ");
         string userInput = Console.ReadLine();
+        Console.WriteLine(" ");
+        bool productExists = false;
+
         foreach (string product in products)
         {
             if (product == userInput)
             {
                 products.Remove(product);
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"Removed product: {userInput}");
+                productExists = true;
                 break;
             }
-            else
-            {
-                Console.WriteLine($"Couldn't find product: {userInput}");
-            }
         }
-
+        if (!productExists) {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Couldn't find product: {userInput}");
+        }
+        Console.ResetColor();
         continue;
     }
 
     // Show statistics
     else if (choice == "5")
     {
-        Console.WriteLine("Statistics");
+        Console.WriteLine(" ");
+        Console.WriteLine("STATISTICS:");
+        Console.WriteLine(" ");
         Console.WriteLine($"Total Products: {products.Count}");
         int lowestNumber = 500;
         int highestNumber = 0;
