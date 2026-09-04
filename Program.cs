@@ -16,7 +16,7 @@ while (inventoryOpen)
     Console.WriteLine("6. Exit");
     Console.WriteLine(" ");
 
-    string choice = Console.ReadLine();
+    string choice = Console.ReadLine()?.Trim() ?? string.Empty;
 
     // Add Products
     if (choice == "1")
@@ -66,7 +66,7 @@ while (inventoryOpen)
         Console.WriteLine(" ");
         Console.WriteLine("SEARCH PRODUCT:");
         Console.WriteLine(" ");
-        string userInput = Console.ReadLine();
+        string userInput = Console.ReadLine()?.Trim() ?? string.Empty;
         Console.WriteLine(" ");
         bool productFound = false;
 
@@ -96,7 +96,7 @@ while (inventoryOpen)
         Console.WriteLine(" ");
         Console.WriteLine("DELETE PRODUCT:");
         Console.WriteLine(" ");
-        string userInput = Console.ReadLine();
+        string userInput = Console.ReadLine()?.Trim() ?? string.Empty;
         Console.WriteLine(" ");
         bool productExists = false;
 

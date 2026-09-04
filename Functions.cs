@@ -20,7 +20,7 @@ namespace Product_List_Level_1
             while (newProducts.Count < 10)
             {
                 Console.ResetColor();
-                string userInput = Console.ReadLine();
+                string userInput = Console.ReadLine()?.Trim() ?? string.Empty;
                 string response = AddProduct(userInput);
 
                 if (response == "exit")
